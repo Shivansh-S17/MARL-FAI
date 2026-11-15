@@ -1,0 +1,13 @@
+[
+ {
+  "steps": 0,
+  "capture": 0.48,
+  "capped_duration": 126.79,
+  "packets": 167.08,
+  "base_return": NaN,
+  "n": 100,
+  "train_captures": 0,
+  "elapsed": 130.36960864067078,
+  "target_step": 0
+ }
+]

@@ -1,0 +1,12 @@
+gymnasium==1.4.0
+matplotlib==3.8.3
+numpy==1.26.3
+pandas==2.2.0
+pettingzoo==1.27.0
+pillow==10.2.0
+pygame==2.6.1
+pytest==9.1.1
+PyYAML==6.0.2
+scipy==1.13.0
+tensorboard==2.19.0
+torch==2.5.1+cu121

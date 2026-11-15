@@ -1,0 +1,16 @@
+[
+ {
+  "steps": 0,
+  "capture": 0.56,
+  "capped_duration": 131.61,
+  "packets": 64.65,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.5424501412686358,
+  "pred_acc": 0.18540936604014016,
+  "pred_labels": 3139,
+  "train_captures": 0,
+  "elapsed": 259.5964045524597,
+  "target_step": 0
+ }
+]

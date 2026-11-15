@@ -1,0 +1,60 @@
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\cuda\__init__.py:129: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10\cuda\CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+pilot_wp0_B1_marl_s9001_base VAL {"steps": 0, "capture": 0.56, "capped_duration": 110.87, "packets": 428.04, "base_return": NaN, "n": 100, "train_captures": 0, "elapsed": 118.01320481300354, "target_step": 0}
+pilot_wp75_B1o8_marl_s9001_base VAL {"steps": 0, "capture": 0.58, "capped_duration": 125.5, "packets": 60.92, "base_return": NaN, "n": 100, "train_captures": 0, "elapsed": 129.15894174575806, "target_step": 0}
+pilot_wp0_B1_marl_s9000_base VAL {"steps": 0, "capture": 0.48, "capped_duration": 126.79, "packets": 167.08, "base_return": NaN, "n": 100, "train_captures": 0, "elapsed": 130.36960864067078, "target_step": 0}
+pilot_wp75_B1o8_marl_s9000_base VAL {"steps": 0, "capture": 0.39, "capped_duration": 149.74, "packets": 48.98, "base_return": NaN, "n": 100, "train_captures": 0, "elapsed": 154.35943698883057, "target_step": 0}
+pilot_wp0_B1_marl_om_s9001_base VAL {"steps": 0, "capture": 0.54, "capped_duration": 110.46, "packets": 430.07, "base_return": NaN, "n": 100, "pred_logloss": 1.571518170044373, "pred_acc": 0.0, "pred_labels": 3284, "train_captures": 0, "elapsed": 197.63730216026306, "target_step": 0}
+pilot_wp75_B1o8_marl_om_s9001_base VAL {"steps": 0, "capture": 0.56, "capped_duration": 131.61, "packets": 64.65, "base_return": NaN, "n": 100, "pred_logloss": 1.5424501412686358, "pred_acc": 0.18540936604014016, "pred_labels": 3139, "train_captures": 0, "elapsed": 259.5964045524597, "target_step": 0}
+pilot_wp0_B1_marl_om_s9000_base VAL {"steps": 0, "capture": 0.49, "capped_duration": 136.28, "packets": 106.72, "base_return": NaN, "n": 100, "pred_logloss": 1.5867949016008904, "pred_acc": 0.0, "pred_labels": 4036, "train_captures": 0, "elapsed": 260.64953207969666, "target_step": 0}
+pilot_wp75_B1o8_marl_om_s9000_base VAL {"steps": 0, "capture": 0.38, "capped_duration": 163.53, "packets": 35.58, "base_return": NaN, "n": 100, "pred_logloss": 1.554919626639034, "pred_acc": 0.1678348909657321, "pred_labels": 2568, "train_captures": 0, "elapsed": 330.08928966522217, "target_step": 0}
+{"steps": 20480, "rollout": 20, "collect_s": 8.5524, "update_s": 30.8934, "elapsed": 924.208, "captures": 447, "episodes": 464, "sps": 25.9597, "kl": 0.002, "ent": 2.1801, "vloss": 0.0072, "ploss": -0.0028, "gnorm": 0.1284, "clipfrac": 0.0127, "explained_var": 0.0353}
+{"steps": 20480, "rollout": 20, "collect_s": 8.6502, "update_s": 30.6925, "elapsed": 928.8052, "captures": 494, "episodes": 508, "sps": 26.0277, "kl": 0.0042, "ent": 2.1492, "vloss": 0.0016, "ploss": -0.0048, "gnorm": 0.1459, "clipfrac": 0.0438, "explained_var": -0.1535}
+{"steps": 20480, "rollout": 20, "collect_s": 9.2723, "update_s": 28.1849, "elapsed": 931.7607, "captures": 652, "episodes": 694, "sps": 27.3378, "kl": 0.002, "ent": 1.6238, "vloss": 0.013, "ploss": -0.0042, "gnorm": 0.2002, "clipfrac": 0.0324, "explained_var": 0.7843}
+{"steps": 20480, "rollout": 20, "collect_s": 7.7488, "update_s": 30.932, "elapsed": 954.1705, "captures": 639, "episodes": 685, "sps": 26.4731, "kl": 0.0033, "ent": 1.631, "vloss": 0.0139, "ploss": -0.0035, "gnorm": 0.2055, "clipfrac": 0.0306, "explained_var": 0.6148}
+{"steps": 20480, "rollout": 20, "collect_s": 25.6715, "update_s": 29.8787, "elapsed": 1344.2378, "captures": 474, "episodes": 489, "sps": 18.374, "kl": 0.0024, "ent": 2.102, "vloss": 0.001, "ploss": -0.0024, "gnorm": 0.1541, "clipfrac": 0.0209, "explained_var": -0.0108, "pred_loss": 0.9175, "labels": 9550, "pred_time": 0.1806}
+{"steps": 20480, "rollout": 20, "collect_s": 27.9886, "update_s": 31.3797, "elapsed": 1390.3569, "captures": 493, "episodes": 506, "sps": 17.1993, "kl": 0.0029, "ent": 2.1863, "vloss": 0.0016, "ploss": -0.0025, "gnorm": 0.0971, "clipfrac": 0.0146, "explained_var": -0.1443, "pred_loss": 0.9124, "labels": 9546, "pred_time": 0.169}
+{"steps": 20480, "rollout": 20, "collect_s": 26.4381, "update_s": 27.5748, "elapsed": 1418.7343, "captures": 635, "episodes": 680, "sps": 18.8604, "kl": 0.0011, "ent": 1.6843, "vloss": 0.0106, "ploss": -0.0015, "gnorm": 0.1756, "clipfrac": 0.0214, "explained_var": 0.4656, "pred_loss": 1.5202, "labels": 15262, "pred_time": 0.2808}
+{"steps": 20480, "rollout": 20, "collect_s": 26.2972, "update_s": 29.4604, "elapsed": 1506.8231, "captures": 573, "episodes": 625, "sps": 18.2953, "kl": 0.0042, "ent": 1.5823, "vloss": 0.0156, "ploss": -0.002, "gnorm": 0.2123, "clipfrac": 0.0117, "explained_var": 0.7082, "pred_loss": 1.5401, "labels": 12968, "pred_time": 0.2129}
+{"steps": 40960, "rollout": 40, "collect_s": 9.0632, "update_s": 32.2035, "elapsed": 1720.5871, "captures": 953, "episodes": 980, "sps": 24.8142, "kl": 0.0042, "ent": 2.0497, "vloss": 0.0014, "ploss": -0.0058, "gnorm": 0.2168, "clipfrac": 0.0602, "explained_var": 0.3478}
+{"steps": 40960, "rollout": 40, "collect_s": 7.5504, "update_s": 34.0034, "elapsed": 1731.8075, "captures": 1040, "episodes": 1130, "sps": 24.6428, "kl": 0.0059, "ent": 1.5714, "vloss": 0.0249, "ploss": -0.0059, "gnorm": 0.2927, "clipfrac": 0.074, "explained_var": 0.6168}
+{"steps": 40960, "rollout": 40, "collect_s": 8.5188, "update_s": 33.9163, "elapsed": 1732.6287, "captures": 862, "episodes": 891, "sps": 24.131, "kl": 0.0017, "ent": 2.1385, "vloss": 0.0088, "ploss": -0.0022, "gnorm": 0.1645, "clipfrac": 0.009, "explained_var": 0.2029}
+{"steps": 40960, "rollout": 40, "collect_s": 9.9033, "update_s": 33.6784, "elapsed": 1742.5899, "captures": 1080, "episodes": 1173, "sps": 23.4961, "kl": 0.0024, "ent": 1.384, "vloss": 0.0211, "ploss": -0.0032, "gnorm": 0.24, "clipfrac": 0.0164, "explained_var": 0.4645}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\cli.py", line 140, in <module>
+    main()
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\cli.py", line 136, in main
+    globals()["cmd_" + a.command.replace("-", "_")](a, cfg)
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\cli.py", line 81, in cmd_pilot
+    for r in ex.map(_run, specs):
+  File "C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\process.py", line 642, in _chain_from_iterable_of_lists
+    for element in iterable:
+  File "C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stuxn\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+16 pilot runs; workers=8

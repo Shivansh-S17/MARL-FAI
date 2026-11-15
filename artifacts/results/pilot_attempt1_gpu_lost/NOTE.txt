@@ -1,0 +1,1 @@
+Attempt 1 aborted: GPU fell off the bus ('GPU is lost') with 6 concurrent GPU workers; infrastructure failure, not a scientific result. Restarted with 4 workers.

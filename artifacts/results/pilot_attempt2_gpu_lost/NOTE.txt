@@ -1,0 +1,1 @@
+Attempt 2 aborted: GPU lost again with 4 concurrent GPU workers (infrastructure failure). Switched to CPU-only training.

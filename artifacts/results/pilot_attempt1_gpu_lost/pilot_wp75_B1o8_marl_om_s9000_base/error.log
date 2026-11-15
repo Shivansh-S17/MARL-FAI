@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\training\run.py", line 127, in run_training
+    tr.train(target, ckpt_cb=ckpt_cb, ckpt_every=cfg.train.checkpoint_every, verbose=True, log_every=20)
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\training\trainer.py", line 282, in train
+    info = self.update(B, lv)
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\Softwares\OneDrive - MSFT\College\Sem7\Foundations of AI Multiagent Systems\Project\pursuit_project\src\pursuit\training\trainer.py", line 205, in update
+    tens = {k: torch.from_numpy(B[k]).to(dev) for k in ("maps", "vec", "mask", "cs", "act", "logp", "first", "h")}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

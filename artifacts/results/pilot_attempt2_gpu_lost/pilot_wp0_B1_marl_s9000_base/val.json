@@ -1,0 +1,24 @@
+[
+ {
+  "steps": 0,
+  "capture": 0.48,
+  "capped_duration": 126.79,
+  "packets": 167.08,
+  "base_return": NaN,
+  "n": 100,
+  "train_captures": 0,
+  "elapsed": 23.224445819854736,
+  "target_step": 0
+ },
+ {
+  "steps": 50000,
+  "capture": 0.97,
+  "capped_duration": 34.34,
+  "packets": 54.98,
+  "base_return": NaN,
+  "n": 100,
+  "train_captures": 1117,
+  "elapsed": 254.64726281166077,
+  "target_step": 50000
+ }
+]

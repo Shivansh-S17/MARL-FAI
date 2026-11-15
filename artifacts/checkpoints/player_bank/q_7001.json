@@ -1,0 +1,189 @@
+{
+ "seed": 7001,
+ "steps": 200187,
+ "q_updates": 200187,
+ "elapsed_s": 64.52737188339233,
+ "curve": [
+  {
+   "steps": 10030,
+   "capture_rate": 0.9810725552050473,
+   "mean_survival": 31.6403785488959,
+   "episodes": 317,
+   "q_updates": 10030,
+   "greedy_changes_vs_prev": null,
+   "states_visited": 650
+  },
+  {
+   "steps": 20018,
+   "capture_rate": 0.943127962085308,
+   "mean_survival": 47.33649289099526,
+   "episodes": 211,
+   "q_updates": 20018,
+   "greedy_changes_vs_prev": 97,
+   "states_visited": 799
+  },
+  {
+   "steps": 30022,
+   "capture_rate": 0.9234449760765551,
+   "mean_survival": 47.866028708133975,
+   "episodes": 209,
+   "q_updates": 30022,
+   "greedy_changes_vs_prev": 84,
+   "states_visited": 902
+  },
+  {
+   "steps": 40015,
+   "capture_rate": 0.9,
+   "mean_survival": 58.78235294117647,
+   "episodes": 170,
+   "q_updates": 40015,
+   "greedy_changes_vs_prev": 84,
+   "states_visited": 955
+  },
+  {
+   "steps": 50072,
+   "capture_rate": 0.9186046511627907,
+   "mean_survival": 58.47093023255814,
+   "episodes": 172,
+   "q_updates": 50072,
+   "greedy_changes_vs_prev": 54,
+   "states_visited": 982
+  },
+  {
+   "steps": 60055,
+   "capture_rate": 0.9197860962566845,
+   "mean_survival": 53.38502673796791,
+   "episodes": 187,
+   "q_updates": 60055,
+   "greedy_changes_vs_prev": 80,
+   "states_visited": 998
+  },
+  {
+   "steps": 70037,
+   "capture_rate": 0.8618421052631579,
+   "mean_survival": 65.67105263157895,
+   "episodes": 152,
+   "q_updates": 70037,
+   "greedy_changes_vs_prev": 60,
+   "states_visited": 1027
+  },
+  {
+   "steps": 80188,
+   "capture_rate": 0.8552631578947368,
+   "mean_survival": 66.78289473684211,
+   "episodes": 152,
+   "q_updates": 80188,
+   "greedy_changes_vs_prev": 45,
+   "states_visited": 1043
+  },
+  {
+   "steps": 90041,
+   "capture_rate": 0.8571428571428571,
+   "mean_survival": 70.37857142857143,
+   "episodes": 140,
+   "q_updates": 90041,
+   "greedy_changes_vs_prev": 35,
+   "states_visited": 1057
+  },
+  {
+   "steps": 100020,
+   "capture_rate": 0.811965811965812,
+   "mean_survival": 85.2905982905983,
+   "episodes": 117,
+   "q_updates": 100020,
+   "greedy_changes_vs_prev": 32,
+   "states_visited": 1065
+  },
+  {
+   "steps": 110053,
+   "capture_rate": 0.852112676056338,
+   "mean_survival": 70.65492957746478,
+   "episodes": 142,
+   "q_updates": 110053,
+   "greedy_changes_vs_prev": 34,
+   "states_visited": 1068
+  },
+  {
+   "steps": 120055,
+   "capture_rate": 0.8091603053435115,
+   "mean_survival": 76.35114503816794,
+   "episodes": 131,
+   "q_updates": 120055,
+   "greedy_changes_vs_prev": 30,
+   "states_visited": 1069
+  },
+  {
+   "steps": 130146,
+   "capture_rate": 0.7931034482758621,
+   "mean_survival": 86.99137931034483,
+   "episodes": 116,
+   "q_updates": 130146,
+   "greedy_changes_vs_prev": 29,
+   "states_visited": 1074
+  },
+  {
+   "steps": 140071,
+   "capture_rate": 0.7350427350427351,
+   "mean_survival": 84.82905982905983,
+   "episodes": 117,
+   "q_updates": 140071,
+   "greedy_changes_vs_prev": 18,
+   "states_visited": 1079
+  },
+  {
+   "steps": 150184,
+   "capture_rate": 0.7372881355932204,
+   "mean_survival": 85.70338983050847,
+   "episodes": 118,
+   "q_updates": 150184,
+   "greedy_changes_vs_prev": 27,
+   "states_visited": 1088
+  },
+  {
+   "steps": 160192,
+   "capture_rate": 0.8382352941176471,
+   "mean_survival": 73.58823529411765,
+   "episodes": 136,
+   "q_updates": 160192,
+   "greedy_changes_vs_prev": 30,
+   "states_visited": 1099
+  },
+  {
+   "steps": 170052,
+   "capture_rate": 0.7874015748031497,
+   "mean_survival": 77.63779527559055,
+   "episodes": 127,
+   "q_updates": 170052,
+   "greedy_changes_vs_prev": 27,
+   "states_visited": 1107
+  },
+  {
+   "steps": 180126,
+   "capture_rate": 0.8372093023255814,
+   "mean_survival": 78.09302325581395,
+   "episodes": 129,
+   "q_updates": 180126,
+   "greedy_changes_vs_prev": 24,
+   "states_visited": 1113
+  },
+  {
+   "steps": 190008,
+   "capture_rate": 0.8903225806451613,
+   "mean_survival": 63.75483870967742,
+   "episodes": 155,
+   "q_updates": 190008,
+   "greedy_changes_vs_prev": 35,
+   "states_visited": 1121
+  },
+  {
+   "steps": 200187,
+   "capture_rate": 0.8380281690140845,
+   "mean_survival": 71.6830985915493,
+   "episodes": 142,
+   "q_updates": 200187,
+   "greedy_changes_vs_prev": 35,
+   "states_visited": 1126
+  }
+ ],
+ "q_hash": "a7fd915a895e890c"
+}
