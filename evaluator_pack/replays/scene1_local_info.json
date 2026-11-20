@@ -1,0 +1,1 @@
+{"title": "Local information", "kind": "illustrative", "traces": ["scene1_local_info.npz"], "caption": "Illustrative deterministic example (RC, B=1/2)", "card": ["Each NPC sees only radius 5 with line of sight.", "Press V and 1-4 in the viewer to see one NPC's view.", "Dashed arrows: packets sent. Solid arrows: packets delivered."]}

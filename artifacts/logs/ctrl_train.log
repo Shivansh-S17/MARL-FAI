@@ -1,0 +1,21 @@
+10 runs
+run complete, skipping: ctrl_shuffle_wp0_B1o8_s1002
+run complete, skipping: ctrl_shuffle_wp0_B1o8_s1000
+run complete, skipping: ctrl_shuffle_wp75_B1o8_s1000
+run complete, skipping: ctrl_shuffle_wp0_B1o8_s1003
+run complete, skipping: ctrl_shuffle_wp75_B1o8_s1002
+run complete, skipping: ctrl_shuffle_wp75_B1o8_s1004
+run complete, skipping: ctrl_shuffle_wp75_B1o8_s1001
+run complete, skipping: ctrl_shuffle_wp75_B1o8_s1003
+run complete, skipping: ctrl_shuffle_wp0_B1o8_s1004
+run complete, skipping: ctrl_shuffle_wp0_B1o8_s1001
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp0_B1o8_s1000
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp0_B1o8_s1001
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp0_B1o8_s1002
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp0_B1o8_s1003
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp0_B1o8_s1004
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp75_B1o8_s1000
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp75_B1o8_s1001
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp75_B1o8_s1002
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp75_B1o8_s1003
+done /home/gowtham.reddy/EEG/tam/pursuit_project/artifacts/results/secondary/ctrl_shuffle_wp75_B1o8_s1004

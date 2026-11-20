@@ -8,7 +8,7 @@ from pathlib import Path
 from .trace import Trace
 from .viewer import Replay, find_replays
 
-FPS = 5
+FPS = 4
 TARGET_FRAMES = 540          # 108 s at 5 fps (required: 90-120 s)
 TITLE_FRAMES = 12
 HOLD_FRAMES = 8

@@ -1,0 +1,322 @@
+[
+ {
+  "cond": "wp0_B1",
+  "method": "marl",
+  "final_median": 1.0,
+  "improvement_median": 0.48,
+  "change_400k_600k": 0.0050000000000000044,
+  "change_800k_1200k": 0.0,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 1.0,
+    "untrained": 0.48,
+    "c400": 0.99,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 53978,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 1.0,
+    "untrained": 0.56,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 57293,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "wp0_B1",
+  "method": "marl_om",
+  "final_median": 1.0,
+  "improvement_median": 0.485,
+  "change_400k_600k": 0.0,
+  "change_800k_1200k": 0.0,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 1.0,
+    "untrained": 0.49,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 53169,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 1.0,
+    "untrained": 0.54,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 52439,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "wp75_B1o8",
+  "method": "marl",
+  "final_median": 0.755,
+  "improvement_median": 0.27,
+  "change_400k_600k": 0.06,
+  "change_800k_1200k": -0.009999999999999953,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 0.71,
+    "untrained": 0.39,
+    "c400": 0.64,
+    "c600": 0.75,
+    "c800": 0.83,
+    "train_captures": 12283,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 0.8,
+    "untrained": 0.58,
+    "c400": 0.74,
+    "c600": 0.75,
+    "c800": 0.7,
+    "train_captures": 13361,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "wp75_B1o8",
+  "method": "marl_om",
+  "final_median": 0.88,
+  "improvement_median": 0.41,
+  "change_400k_600k": 0.024999999999999967,
+  "change_800k_1200k": 0.06,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 0.83,
+    "untrained": 0.38,
+    "c400": 0.82,
+    "c600": 0.84,
+    "c800": 0.79,
+    "train_captures": 14948,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 0.93,
+    "untrained": 0.56,
+    "c400": 0.8,
+    "c600": 0.83,
+    "c800": 0.85,
+    "train_captures": 14838,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "budget-limited, not shown converged"
+ },
+ {
+  "cond": "wp25_B0",
+  "method": "marl",
+  "final_median": 1.0,
+  "improvement_median": 0.55,
+  "change_400k_600k": 0.0050000000000000044,
+  "change_800k_1200k": 0.0,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 1.0,
+    "untrained": 0.19,
+    "c400": 0.99,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 44307,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 1.0,
+    "untrained": 0.71,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 48345,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "wp25_B0",
+  "method": "marl_om",
+  "final_median": 1.0,
+  "improvement_median": 0.575,
+  "change_400k_600k": 0.0,
+  "change_800k_1200k": 0.0,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 1.0,
+    "untrained": 0.23,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 43924,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 1.0,
+    "untrained": 0.62,
+    "c400": 1.0,
+    "c600": 1.0,
+    "c800": 1.0,
+    "train_captures": 39440,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": true,
+   "improve": true,
+   "no_collapse": true
+  },
+  "passed": true,
+  "required": true,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "qbank_B1o8",
+  "method": "marl",
+  "final_median": 0.015,
+  "improvement_median": -0.095,
+  "change_400k_600k": -0.015,
+  "change_800k_1200k": -0.045000000000000005,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 0.03,
+    "untrained": 0.11,
+    "c400": 0.06,
+    "c600": 0.06,
+    "c800": 0.07,
+    "train_captures": 1573,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 0.0,
+    "untrained": 0.11,
+    "c400": 0.08,
+    "c600": 0.05,
+    "c800": 0.05,
+    "train_captures": 1673,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": false,
+   "improve": false,
+   "no_collapse": true
+  },
+  "passed": false,
+  "required": false,
+  "trend": "flat/declining"
+ },
+ {
+  "cond": "qbank_B1o8",
+  "method": "marl_om",
+  "final_median": 0.08,
+  "improvement_median": -0.015,
+  "change_400k_600k": 0.045,
+  "change_800k_1200k": 0.04,
+  "per_seed": [
+   {
+    "seed": 9000,
+    "final": 0.11,
+    "untrained": 0.11,
+    "c400": 0.04,
+    "c600": 0.07,
+    "c800": 0.03,
+    "train_captures": 1742,
+    "finite": true
+   },
+   {
+    "seed": 9001,
+    "final": 0.05,
+    "untrained": 0.08,
+    "c400": 0.02,
+    "c600": 0.08,
+    "c800": 0.05,
+    "train_captures": 1729,
+    "finite": true
+   }
+  ],
+  "checks": {
+   "finite": true,
+   "captures": true,
+   "level": false,
+   "improve": false,
+   "no_collapse": true
+  },
+  "passed": false,
+  "required": false,
+  "trend": "budget-limited, not shown converged"
+ }
+]

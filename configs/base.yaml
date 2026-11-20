@@ -3,6 +3,8 @@ env:
   n_npcs: 4
   horizon: 200
   radius: 5
+  player_radius: 5
+  spawn: standard       # standard | split
   delay: 0
   budget: "1/8"
   min_start_dist: 4

@@ -26,6 +26,12 @@ FROZEN_WP_SEED, BLOCK_SEED, DIAG_SEED = 100000, 200000, 300000
 N_BLOCK_EPISODES = 20
 
 
+def is_transfer_run(spec):
+    """Q-player transfer/adaptation uses the preselected waypoint xi=0.75-trained pursuers (plan 7.3)."""
+    o = spec["opponent"]
+    return o["type"] == "waypoint" and abs(o.get("xi", -1) - 0.75) < 1e-9 and not spec.get("shuffle_features", False)
+
+
 def probe_set(bank_dir=PLAYER_BANK_DIR):
     keys = set()
     for s in HELDOUT_BANK:
@@ -53,14 +59,14 @@ def fresh_bank(cfg, spec, bank_state):
 
 
 def run_block(cfg, spec, actor, bank_state, player, scenarios, pred_mode="none", q0=None, probe=None,
-              recorder_ids=None, trace_dir=None, tag="", rule=None, meta_extra=None):
+              recorder_ids=None, trace_dir=None, tag="", rule=None, meta_extra=None, use_packets=True):
     """One block of consecutive episodes. The player object (and predictor bank) persist across the
     episodes of the block; the caller creates fresh clones per block."""
     budget = parse_budget(spec["budget"] if spec else cfg.env.budget)
     core = make_core(cfg, player=player, budget=budget)
     bank = fresh_bank(cfg, spec, bank_state) if spec and spec["method"] == "marl_om" else None
     hook = EvalPredictorHook(bank, online=(pred_mode == "online")) if bank is not None else None
-    team = build_team(cfg, core, bank, hook)
+    team = build_team(cfg, core, bank, hook, use_packets)
     if rule is not None:
         ctrl = RuleController(rule)
     else:
@@ -146,7 +152,7 @@ def eval_player_cells(run_dir, cells=("off_frozen", "on_frozen", "on_online"), b
                                        note=f"predictor {pm}" if om else ""))
             for r in rows:
                 r.update(run_id=spec["run_id"], method=spec["method"], seed=spec["seed"], B=spec["budget"],
-                         protocol=cell_, block=k, q_ckpt=qseed, player="qbank")
+                         protocol=cell_, block=k, q_ckpt=qseed, player="qbank", train_opponent="wp75")
             out += rows
             if cell_ == "on_frozen" and not om and diag:
                 finals[k] = q  # final Q of each MARL adaptive block for the matched-opponent diagnostic
@@ -197,6 +203,22 @@ def _run_dirs(a):
     return dirs
 
 
+def _eval_reliance_dir(d):
+    """Reliance diagnostic: same scenarios with delivered packets used versus ignored by the receivers."""
+    cfg, spec, actor, bs = load_run(d)
+    scen = make_scenarios(cfg, FROZEN_WP_SEED, 100, "f")
+    rows = []
+    for mode, use in (("packets_used", True), ("packets_ignored", False)):
+        player = WaypointPlayer(load_map(cfg.env.map), spec["opponent"]["xi"])
+        r, _, _ = run_block(cfg, spec, actor, bs, player, scen, pred_mode="frozen", use_packets=use)
+        for x in r:
+            rows.append(dict(run_id=spec["run_id"], method=spec["method"], seed=spec["seed"], B=str(spec["budget"]),
+                             player=f"wp{int(round(spec['opponent']['xi'] * 100))}", mode=mode,
+                             scenario_id=x["scenario_id"], captured=x["captured"], length=x["length"], packets=x["packets"]))
+    pd.DataFrame(rows).to_csv(Path(d) / "eval_reliance.csv", index=False)
+    return spec["run_id"]
+
+
 def run_protocol(a, cfg):
     out = Path(a.output) if a.output else EVAL_DIR
     out.mkdir(parents=True, exist_ok=True)
@@ -214,40 +236,86 @@ def run_protocol(a, cfg):
         pd.DataFrame(rows).to_csv(out / "baselines.csv", index=False)
         print("baselines rows:", len(rows))
         return
-    for d in _run_dirs(a):
-        if proto == "frozen_waypoint":
-            if json.loads((d / "meta.json").read_text())["spec"]["opponent"]["type"] != "waypoint":
-                continue
-            tgt = d / "eval_frozen_waypoint.csv"
-            if tgt.exists():
-                continue
-            rows, info = eval_frozen_waypoint(d)
-            pd.DataFrame(rows).to_csv(tgt, index=False)
-        elif proto == "adaptive":
-            if json.loads((d / "meta.json").read_text())["spec"]["opponent"]["type"] != "qbank":
-                continue
-            tgt = d / "eval_player_cells.csv"
-            if tgt.exists():
-                continue
-            rows, finals = eval_player_cells(d)
-            pd.DataFrame(rows).to_csv(tgt, index=False)
-            if finals:
-                np.savez(d / "final_q_blocks.npz", **{str(k): q.Q for k, q in finals.items()})
-        print("evaluated", d.name, flush=True)
-    if proto == "adaptive":  # matched-opponent diagnostic needs the MARL block Qs for both methods
-        for d in _run_dirs(a):
+    import multiprocessing as mp
+    from concurrent.futures import ProcessPoolExecutor
+    workers = max(1, int(getattr(a, "workers", 1) or 1))
+    dirs = [str(d) for d in _run_dirs(a)]
+
+    def pool_map(fn, items):
+        if workers == 1:
+            yield from map(fn, items)
+        else:
+            with ProcessPoolExecutor(workers, mp_context=mp.get_context("spawn")) as ex:
+                yield from ex.map(fn, items)
+
+    if proto == "frozen_waypoint":
+        for name in pool_map(_eval_frozen_dir, dirs):
+            print("evaluated", name, flush=True)
+    elif proto == "reliance":
+        sel = []
+        for d in dirs:
+            sp = json.loads((Path(d) / "meta.json").read_text())["spec"]
+            if str(sp["budget"]) == "1" and sp["opponent"]["type"] == "waypoint" and abs(sp["opponent"]["xi"] - 0.75) < 1e-9                     and not sp.get("shuffle_features", False):
+                sel.append(d)
+        for name in pool_map(_eval_reliance_dir, sel):
+            print("reliance", name, flush=True)
+    elif proto == "adaptive":
+        for name in pool_map(_eval_adaptive_dir, dirs):
+            print("evaluated", name, flush=True)
+        # matched-opponent diagnostic: needs the MARL block Qs for both methods
+        jobs = []
+        for d in map(Path, dirs):
             spec = json.loads((d / "meta.json").read_text())["spec"]
-            if spec["opponent"]["type"] != "qbank" or spec["method"] != "marl":
-                continue
-            twin = d.parent / d.name.replace("_marl_", "_marl_om_")
-            fq = d / "final_q_blocks.npz"
-            if not fq.exists():
-                continue
-            z = np.load(fq)
-            cfg2 = load_config()
-            finals = {int(k): QPlayer(load_map(cfg2.env.map), cfg2.env.horizon, Q=z[k]) for k in z.files}
-            rows = eval_matched_diagnostic(d, finals)
-            if twin.exists():
-                rows += eval_matched_diagnostic(twin, finals)
-            pd.DataFrame(rows).to_csv(d / "eval_matched_diagnostic.csv", index=False)
-            print("diagnostic", d.name, flush=True)
+            if is_transfer_run(spec) and spec["method"] == "marl" and (d / "final_q_blocks.npz").exists():
+                jobs.append(str(d))
+        for name in pool_map(_eval_diag_dir, jobs):
+            print("diagnostic", name, flush=True)
+    else:
+        raise SystemExit(f"unknown protocol {proto}")
+
+
+def _setup_worker():
+    import torch
+    torch.set_num_threads(1)
+
+
+def _eval_frozen_dir(d):
+    _setup_worker()
+    d = Path(d)
+    if json.loads((d / "meta.json").read_text())["spec"]["opponent"]["type"] != "waypoint":
+        return d.name + " (skipped)"
+    tgt = d / "eval_frozen_waypoint.csv"
+    if tgt.exists():
+        return d.name + " (exists)"
+    rows, info = eval_frozen_waypoint(d)
+    pd.DataFrame(rows).to_csv(tgt, index=False)
+    return d.name
+
+
+def _eval_adaptive_dir(d):
+    _setup_worker()
+    d = Path(d)
+    if not is_transfer_run(json.loads((d / "meta.json").read_text())["spec"]):
+        return d.name + " (skipped)"
+    tgt = d / "eval_player_cells.csv"
+    if tgt.exists():
+        return d.name + " (exists)"
+    rows, finals = eval_player_cells(d)
+    pd.DataFrame(rows).to_csv(tgt, index=False)
+    if finals:
+        np.savez(d / "final_q_blocks.npz", **{str(k): q.Q for k, q in finals.items()})
+    return d.name
+
+
+def _eval_diag_dir(d):
+    _setup_worker()
+    d = Path(d)
+    twin = d.parent / d.name.replace("_marl_", "_marl_om_")
+    z = np.load(d / "final_q_blocks.npz")
+    cfg2 = load_config()
+    finals = {int(k): QPlayer(load_map(cfg2.env.map), cfg2.env.horizon, Q=z[k]) for k in z.files}
+    rows = eval_matched_diagnostic(d, finals)
+    if twin.exists() and (twin / "status.json").exists():
+        rows += eval_matched_diagnostic(twin, finals)
+    pd.DataFrame(rows).to_csv(d / "eval_matched_diagnostic.csv", index=False)
+    return d.name

@@ -6,7 +6,7 @@ import torch
 
 from ..controllers.baselines import IPController, RCController
 from ..env.observation import action_mask, build_obs
-from ..env.scenario import Scenario, sample_scenario
+from ..env.scenario import Scenario, sample_for_cfg, sample_scenario
 from ..env.team import Team, make_core
 from ..models.belief import Belief
 from ..models.networks import Actor
@@ -72,11 +72,10 @@ class EvalPredictorHook:
             self.bank.preds[agent_id].add(feat, legal, label)
 
 
-def build_team(cfg, core, bank: PredictorBank | None, hook=None) -> Team:
+def build_team(cfg, core, bank: PredictorBank | None, hook=None, use_packets=True) -> Team:
     beliefs = None
     if bank is not None:
         beliefs = [Belief(core.map, core.vis, bank.preds[i], bank.fb) for i in range(core.N)]
-    use_packets = True
     return Team(core, use_packets, beliefs, hook)
 
 
@@ -106,5 +105,5 @@ def make_scenarios(cfg, seed_start: int, n: int, prefix="s"):
     for k in range(n):
         s = seed_start + k
         rng = np.random.default_rng(np.random.SeedSequence([s, 3]))
-        out.append(sample_scenario(gm, rng, cfg.env.n_npcs, cfg.env.min_start_dist, None, f"{prefix}{s}"))
+        out.append(sample_for_cfg(cfg, gm, rng, None, f"{prefix}{s}"))
     return out

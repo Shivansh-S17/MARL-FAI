@@ -1,0 +1,20 @@
+{
+ "title": "A learning player, early and late",
+ "kind": "experimental",
+ "traces": [
+  "marl_om_on_online_b0_200000.npz",
+  "marl_om_on_online_b0_200019.npz",
+  "marl_om_on_frozen_b0_200019.npz"
+ ],
+ "titles": [
+  "episode 1, predictor online",
+  "episode 20, predictor online",
+  "episode 20, predictor frozen"
+ ],
+ "caption": "Q-player transfer from waypoint xi = 0.75 training; the player updates its Q-table during the block",
+ "card": [
+  "Out-of-distribution transfer: pursuers were trained against the waypoint player.",
+  "The Q-learning player updates after every transition within the block.",
+  "Compare early and late episodes; the frozen-predictor panel is the control."
+ ]
+}

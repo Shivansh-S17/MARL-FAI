@@ -1,29 +1,31 @@
-# Experiment protocol (to be frozen before final test analysis)
+# Experiment protocol (frozen before the main matrix)
 
-Status: DRAFT until the pilot decision is recorded in `docs/pilot_report.md`; then the training budget and reward
-variant below are filled in and this file is not changed after final tests are evaluated.
+Task ID: **C0** (corridor, N=4, NPC radius 5, player radius 5, H=200, delta=0, standard spawn with NPC-player graph distance at least 4, base reward). Manifest: `configs/final_manifest.json` (120 runs). Task versions are never pooled.
 
-## Frozen after pilot
-- Common training budget (transitions / run): TBD from pilot. Reward variant: TBD (base or shaped, identical for both methods).
+## Training
+- 3 waypoint levels (xi = 0, 0.25, 0.75, trained separately) x B in {0, 1/8, 1/2, 1} x {MARL, MARL-OM} x seeds 1000-1004 = 120 runs.
+- 1,200,000 base-reward environment transitions per run; final checkpoint is the scientific checkpoint; no best-checkpoint selection.
+- Curriculum: first 30k transitions start distance 1-3, next 60k distance 4-8, then the standard spawn distribution.
+- Validation points (100 episodes, seeds from 20000) at 400k, 600k, 800k and 1.2M. Intermediate weights are not kept, so these are the only comparisons across checkpoints.
+- Paired seeds: MARL and MARL-OM share seed IDs, initial actor and critic tensors, curriculum and environment streams.
 
-## Statistical units and contrasts
-- Unit: paired trained-policy seed group (5 seeds, 1000-1004); within a group, matched scenario IDs.
-  Learned-player evaluation preserves the five held-out player-checkpoint strata (20 episodes each).
-- Frozen waypoint scenarios: seeds 100000-100099 (same for every method/seed/B; IP/RC reuse them).
-- Frozen learned-player and adaptive blocks: seeds 200000 + 100*block + episode; matched diagnostic: 300000 + 100*block.
-- Validation (pilot only): seeds from 20000, never used in final tests. Bootstrap: 5000 repetitions, seed 40000.
-- Metrics: p0(B)=MARL capture, p1(B)=frozen MARL-OM capture, G(B)=p1-p0, Fgap(Blo,1)=G(Blo)/(p0(1)-p0(Blo)) for
-  Blo in {0,1/8,1/2}, a=0.9*p0(1), S(a)=minB reaching a (MARL) minus minB (MARL-OM). Undefined values are counted, not
-  discarded; negative gains and gap fractions >1 are kept; no interpolation or monotonic smoothing.
-- Primary confirmatory family: G(1/8) for xi=0, xi=0.25, xi=0.75 (when xi=0.25 is in main scope) and frozen learned
-  player. Two-sided sign-flip randomisation over five seed differences, Holm adjustment, alpha=0.05. With five seeds the
-  smallest attainable two-sided p is 0.0625, so adjusted significance is not attainable; reported as a limitation.
-- Low-budget compensation: one-sided 95% lower bound of p1(1/8)-p0(1) > -0.05; otherwise inconclusive (not equivalence).
-- Adaptive blocks: resample paired seeds and whole blocks (20 ordered episodes); online-vs-frozen and early-vs-late are
-  exploratory and never pooled with frozen primary results.
-- Invalid runs: any run with status != complete is listed as failed/incomplete in tables; no seed is dropped after
-  seeing results. Implementation faults invalidate and re-run affected paired cells under new run IDs.
+## Evaluation
+- Frozen waypoint: 100 fresh episodes per checkpoint, scenario seeds from 100000, greedy actions; IP and RC on the same scenarios.
+- Q-player transfer (exploratory, out-of-distribution): xi=0.75-trained pursuers at every B, all five seeds, five held-out Q checkpoints (7100-7104), 20 episodes each, Q updates off, epsilon 0.10. Labelled as transfer from waypoint xi=0.75 training.
+- Adaptive (exploratory): the same pursuers, 5 blocks of 20 consecutive episodes, five protocol cells (Q off/on, predictor none/frozen/online); the first two reuse the transfer episodes. Matched-opponent diagnostic: 20 fresh episodes against each block's final frozen Q-table.
+- Q banks (seeds 7000-7002 and 7100-7104, 200k transitions each, RC at B=1) were trained under C0 with player radius 5 and remain valid.
 
-## Figures
-capture vs B (per player), actual packets vs capture/duration, adaptive curves, prediction quality, pilot curves,
-labelled trajectory example. All rebuilt by `python -m pursuit.cli analyze` from saved CSV/JSON.
+## Statistics
+- 5,000 bootstrap repetitions, analysis seed 40000. Resample paired seed groups, then matched scenarios; recompute data-dependent crossings and gaps each time; report undefined rates.
+- Confirmatory family: G(1/8) = p1(1/8) - p0(1) style gains as defined in the plan, separately for xi = 0, 0.25, 0.75; two-sided paired sign-flip randomization, Holm at 0.05. Five seeds give coarse p-values.
+- Q-player transfer, adaptive and online comparisons are exploratory and are never pooled with frozen waypoint results.
+- Near-ceiling results are labelled as such: a zero budget difference at ceiling is not communication savings.
+
+## Invalid-run handling
+Runs with status other than complete stay listed with their status and logs. No seed is removed after results are seen. A systemic bug invalidates and reruns the affected paired cells under a new run ID.
+
+## Scope statement
+RC reaches near-full capture at B=0 in this task (calibration, `docs/pilot_report.md`), so the study measures when communication and opponent prediction add value in a setting with already strong baselines. No positive communication or opponent-modeling result is guaranteed.
+
+## Resources
+Server runs only inside `/home/gowtham.reddy/EEG/tam`, no existing file edited or deleted, 5 GB allowance (about 12 MB per run, about 1.5 GB for 120 runs plus evaluation traces), modest concurrency (12 processes, one process per run).

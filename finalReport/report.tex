@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{PRIMEarxiv}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\fancyhead[L]{MARL under Limited Communication}
+\fancyhead[R]{Final Report}
+\title{Can Opponent Learning Compensate for Limited Communication?\\Multi-Agent Reinforcement Learning for Cooperative Pursuit}
+\author{
+  Piyush Choudhary \\ Roll No.: 23110247 \\ \texttt{piyush.choudhary@iitgn.ac.in}
+  \And
+  Shivansh Shukla \\ Roll No.: 23110303 \\ \texttt{shivansh.shukla@iitgn.ac.in}
+}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Four non-player characters (NPCs) pursue one player through a 20-by-20 corridor map using only local line-of-sight observations and a budgeted 16-byte broadcast channel. We build four pursuers: independent pursuit (IP), rule-based coordination (RC), communication-constrained recurrent MAPPO (MARL), and MAPPO with an explicit local opponent model (MARL-OM). We train 120 paired runs over three waypoint-player randomness levels, four communication budgets and five seeds, evaluate them against scripted and learning players, and report capture rate, capture time and actual communication with bootstrap uncertainty. Against the stationary and mildly random waypoint players every method captures almost every episode, so those conditions are ceiling results. Against the highly random player ($\xi=0.75$) MARL-OM captures 0.93 versus 0.82 for MARL at budget $1/8$ (gain $+0.11$, 95\% CI $-0.01$ to $0.22$), and on transfer to held-out Q-learning players the gain at $1/8$ is $+0.27$ (95\% CI $0.01$ to $0.58$); neither passes the pre-specified five-seed Holm test, so both are reported as estimates. Updating the predictor online shows no measurable difference from a frozen one.
+\end{abstract}
+\keywords{multi-agent reinforcement learning \and opponent modeling \and partial observability \and communication constraints \and pursuit--evasion}
+
+\section{Introduction}
+Imagine four NPCs pursuing a player through a corridor map. One sees the player turn left; the others see empty space. A message could tell them which route to cover, and when messages are scarce a pursuer that has learned the player's usual turns may still predict an interception point (Figure~\ref{fig:map}). We study when an explicit opponent model adds value on top of, or in place of, communication.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/map_information.png}
+\caption{The corridor map and what each NPC can see: radius-5 line of sight, three rooms joined by doorways.}
+\label{fig:map}
+\end{figure}
+
+We answer three questions: (1) how the communication budget affects capture; (2) at equal budget, whether explicit opponent modeling helps and how much communication it can replace; (3) whether the benefit holds when the player learns to evade, and whether updating the opponent model online helps track that change.
+
+\section{Background and preliminaries}
+Distributed constraint optimization (DCOP) supports role and task allocation \citep{fioretto2018}; our rule-based coordinator uses a local utility-with-overlap score in that spirit. Multi-agent reinforcement learning (MARL) provides the sequential decision framework; we use recurrent MAPPO with a centralized critic \citep{yu2022}. Opponent modeling predicts the player's next move \citep{albrecht2018}. The player has its own learning algorithm. These components are kept separate throughout. Notation: $N=4$ NPCs, horizon $H=200$, budget $B\in\{0,\tfrac18,\tfrac12,1\}$ packets per NPC per step, waypoint randomness $\xi$, $P_{\text{MARL}}(B)$ and $P_{\text{OM}}(B)$ capture rates, and $G(B)=P_{\text{OM}}(B)-P_{\text{MARL}}(B)$.
+
+\section{Problem formulation}
+\textbf{Environment.} A 20$\times$20 grid with walls at the boundary and at columns 6 and 13 (doorways at rows 4, 10 and 15). Four NPCs and one player move one cardinal cell per step; all moves resolve simultaneously. Capture is co-location after movement or an opposite-direction swap. An episode lasts at most $H=200$ steps and ends on capture.
+
+\textbf{Information.} Each NPC sees cells within Manhattan distance 5 that have a clear line of sight (supercover traversal; a wall touched at a corner blocks sight). NPCs know the map, their ID, time, budget and radius, but not the player's position unless it is visible or reported.
+
+\textbf{Channel.} A budget $B\in\{0,1/8,1/2,1\}$ allows NPC $i$ to send at decision $t$ only if $\mathrm{sent}_i<\lfloor B(t+1)\rfloor$. A packet is a fixed 16-byte broadcast delivered at the next decision and charged even if capture occurs on that transition.
+
+\textbf{Reward.} $r=\mathbf 1[\text{capture}]-0.10/H-0.01\,b_t/(NH)-0.02\,m_t/(NH)$ with $\gamma=1$, where $b_t$ is the number of broadcasts and $m_t$ the number of NPC moves at step $t$.
+
+\section{Methods}
+\textbf{IP} follows shortest paths to the latest direct sighting and otherwise searches its quadrant. \textbf{RC} follows a shared role-hint destination (chase, intercept, block or search) and sends on new sightings, role changes, or every ten steps. \textbf{MARL} is recurrent MAPPO: a shared GRU actor over a convolutional map encoder with a masked ten-action head (five moves times send or silence) and a centralized critic. \textbf{MARL-OM} adds a per-NPC local predictor of the player's next displacement, trained only from permitted consecutive direct sightings, and a belief over the player's cell that feeds seven summary features to the actor.
+
+\textbf{Players.} The waypoint player follows a fixed route with randomness $\xi\in\{0,0.25,0.75\}$. The learning player is a tabular Q-learner on a coarse local state with $\epsilon=0.10$, trained as eight checkpoints (three validation, five held-out).
+
+\section{Experimental setup and pilot}
+All learned runs use 1.2M environment transitions. The pilot examined 300k, 600k and 1.2M steps. A revised adequacy check requires finite losses, at least 100 training captures, final validation capture of at least 0.20, and an improvement of at least 0.10 over the untrained policy. All six required waypoint conditions satisfy it (Table~\ref{tab:adequacy}).
+
+\begin{table}[t]
+\centering
+\caption{Pilot adequacy at 1.2M transitions (median of two seeds, 100 validation episodes).}
+\label{tab:adequacy}
+\begin{tabular}{llrrr}
+\toprule
+Condition & Method & Capture & Gain vs.\ untrained & Change 800k$\to$1.2M \\
+\midrule
+$\xi=0$, $B=1$ & MARL & 1.00 & 0.48 & 0.00 \\
+$\xi=0$, $B=1$ & MARL-OM & 1.00 & 0.48 & 0.00 \\
+$\xi=0.75$, $B=1/8$ & MARL & 0.76 & 0.27 & $-0.01$ \\
+$\xi=0.75$, $B=1/8$ & MARL-OM & 0.88 & 0.41 & $+0.06$ \\
+$\xi=0.25$, $B=0$ & MARL & 1.00 & 0.55 & 0.00 \\
+$\xi=0.25$, $B=0$ & MARL-OM & 1.00 & 0.57 & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Task calibration.} Before fixing the task we audited message use (no packets at $B=0$; delivered packets update the receiver's memory and role hint) and compared four predeclared task variants on validation seeds. RC captured 97--100\% of episodes at $B=0$ in all four, so the original task (radius 5, $H=200$) is retained as the main task. The study therefore measures when communication and opponent prediction add value when strong baselines already capture nearly every episode.
+
+\textbf{Baselines.} Against the waypoint players, IP and RC both capture every evaluation episode at every budget; IP, which sends nothing, finishes in fewer steps (17.0 versus 22--24 at $\xi=0$).
+
+\section{Controlled results}
+All 120 runs (3 waypoint levels $\times$ 4 budgets $\times$ 2 learners $\times$ 5 seeds) finished at 1.2M transitions. Each cell below is the mean over five training seeds, each evaluated on 100 held-out scenarios; intervals are 95\% paired bootstrap intervals (5,000 resamples). $G(B)=P_{\text{OM}}(B)-P_{\text{MARL}}(B)$ is the capture gain from the opponent model.
+
+\textbf{Deterministic and mildly random players.} At $\xi=0$ and $\xi=0.25$ both learners capture essentially every episode at every budget (capture 0.996--1.000; Table~\ref{tab:wp}). Because capture is at ceiling, these two conditions do not separate the methods and are reported as uninformative for the gain and communication-saved measures; their gap fractions are left undefined rather than imputed.
+
+\textbf{Highly random player ($\xi=0.75$).} This is the only waypoint condition with headroom. MARL-OM captures more than MARL at $B=0$ (0.922 versus 0.860) and $B=1/8$ (0.932 versus 0.820), with $G(1/8)=+0.112$ (95\% CI $-0.006$ to $0.218$). At $B=1/2$ the order reverses ($G=-0.100$, CI $-0.280$ to $0.064$) and at $B=1$ the two are close ($G=+0.014$). The pre-specified test on $G(1/8)$ across five seeds gives a Holm-adjusted $p=0.56$ (the smallest attainable with five seeds is $0.0625$); the seed-level differences are $+0.18,+0.21,+0.23,-0.08,+0.02$. The point estimate favours MARL-OM at low budget, and the data do not establish it at the five-seed level.
+
+\begin{table}[t]
+\centering
+\caption{Capture rate at $\xi=0.75$ (mean over 5 seeds; 95\% bootstrap interval).}
+\label{tab:wp}
+\begin{tabular}{lcccc}
+\toprule
+$B$ & MARL & MARL-OM & $G$ & 95\% CI for $G$ \\
+\midrule
+0 & 0.860 & 0.922 & $+0.062$ & $[-0.054,\,0.174]$ \\
+1/8 & 0.820 & 0.932 & $+0.112$ & $[-0.006,\,0.218]$ \\
+1/2 & 0.842 & 0.742 & $-0.100$ & $[-0.280,\,0.064]$ \\
+1 & 0.820 & 0.834 & $+0.014$ & $[-0.068,\,0.090]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/capture_vs_budget_waypoint.png}
+\caption{Capture rate versus communication budget against the waypoint player. Small dots are training seeds; bands are 95\% bootstrap intervals. IP and RC capture every episode.}
+\label{fig:budget}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/packets_vs_capture.png}
+\caption{Actual packets sent per episode against capture rate (left) and capped episode duration (right), one point per run and condition.}
+\label{fig:packets}
+\end{figure}
+
+\textbf{Shuffled-feature control.} To check whether the predictor's content matters, we trained the MARL-OM architecture with its predictor features shuffled (10 extra runs, $B=1/8$, five seeds each at $\xi=0$ and $\xi=0.75$). At $\xi=0$ both capture every episode (1.000 versus 0.998). At $\xi=0.75$ the intact MARL-OM captures 0.932 and the shuffled variant 0.832, a difference of $+0.100$ with seed-level differences of $+0.29,-0.01,+0.11,+0.18,-0.07$; this control was not part of the confirmatory tests and is descriptive.
+
+\textbf{Role of communication.} In this task the scripted baselines and the learners capture nearly every episode with no communication at $\xi\le0.25$, so extra messages have no capture headroom to add there. At $\xi=0.75$ capture does not increase monotonically with the budget for either learner (MARL: 0.860, 0.820, 0.842, 0.820), so the study does not show a budget-driven improvement in this setting.
+
+\section{Adaptive-player results}
+Pursuers trained against the $\xi=0.75$ waypoint player were evaluated, without retraining, against the held-out Q-learning player banks (an out-of-distribution transfer test, five held-out banks). Capture is low in absolute terms for both learners (Table~\ref{tab:q}), well below the 0.82--0.93 reached against the waypoint player the pursuers were trained on.
+
+\begin{table}[t]
+\centering
+\caption{Transfer to the held-out Q-learning player (mean over 5 seeds; 95\% bootstrap interval).}
+\label{tab:q}
+\begin{tabular}{lcccc}
+\toprule
+$B$ & MARL & MARL-OM & $G$ & 95\% CI for $G$ \\
+\midrule
+0 & 0.240 & 0.372 & $+0.132$ & $[-0.280,\,0.548]$ \\
+1/8 & 0.094 & 0.362 & $+0.268$ & $[0.010,\,0.584]$ \\
+1/2 & 0.132 & 0.042 & $-0.090$ & $[-0.260,\,0.014]$ \\
+1 & 0.064 & 0.162 & $+0.098$ & $[0.008,\,0.210]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/adaptive_curves.png}
+\caption{Episode-index capture curves for the Q-learning player (exploratory): frozen versus online predictor.}
+\label{fig:adaptive}
+\end{figure}
+
+At $B=1/8$ MARL-OM captures 0.362 versus 0.094 for MARL, and the interval for $G(1/8)$ excludes zero ($+0.268$, 95\% CI $0.010$ to $0.584$). The pre-specified five-seed sign-flip test gives a Holm-adjusted $p=0.19$, so the effect is a suggestive estimate rather than a confirmed one; per-seed differences are $+0.31,+0.25,+0.86,-0.10,+0.02$. As in the waypoint results, the sign flips at $B=1/2$ ($G=-0.090$).
+
+\textbf{Tracking within a block.} Within the 20-episode adaptation blocks, capture in the first five and last five episodes is nearly unchanged for both methods: MARL 0.112$\to$0.136 (player frozen) and 0.112$\to$0.120 (player learning); MARL-OM 0.226$\to$0.230 (frozen) and 0.224$\to$0.232 (learning). Updating the predictor online gives 0.220$\to$0.230 against 0.224$\to$0.232 for the frozen predictor on the same blocks, so the two predictors differ by 0.002 or less in either window. These blocks show no measurable adaptation or tracking effect in either direction, and this analysis is exploratory.
+
+\section{Discussion and limitations}
+\textbf{What the measurements support.} (i) Strong scripted pursuers (IP, RC) and both learners capture nearly every episode against the stationary and mildly random players with no communication, so those conditions are ceiling results. (ii) Where headroom exists ($\xi=0.75$ and the Q-learning player), MARL-OM has the higher point estimate at $B=0$ and $B=1/8$; at $B=1/8$ against the Q-learning player the bootstrap interval for the gain excludes zero ($+0.268$). (iii) Neither gain survives the pre-specified five-seed Holm test (adjusted $p=0.56$ and $0.19$), so we report them as estimates with uncertainty. (iv) Online updating of the predictor shows no measurable difference from the frozen predictor within 20-episode blocks.
+
+\textbf{Limits.} The main task was kept at radius 5 and $H=200$ after calibration showed RC at 97--100\% capture without messages in all four predeclared variants; the study therefore addresses communication in a task where it adds little to the strongest baselines, and a harder communication bottleneck is future work. The learned pursuers capture 0.82--0.93 against the $\xi=0.75$ player, below IP and RC, which capture every episode there. The Q-learning player is used only for evaluation, so its results measure transfer, not training against a learning opponent. Five seeds limit the attainable significance (smallest sign-flip $p=0.0625$).
+
+\section{Contributions and reproducibility}
+Piyush Choudhary: simulator, maps, capture, visibility and channel, waypoint and Q-learning players, IP/RC, environment tests, rendering and viewer. Shivansh Shukla: MAPPO, local predictors and beliefs, frozen and online protocols, pilot, manifests, statistics and plots. Both: interfaces, protocol freeze, experiments, analysis, report, slides and demo. Code, configurations, manifests, run metadata and the evaluator pack are in \texttt{pursuit\_project/}.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

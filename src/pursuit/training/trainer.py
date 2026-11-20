@@ -12,7 +12,7 @@ from torch.distributions import Categorical
 
 from ..env.geometry import load_map
 from ..env.observation import CRITIC_DIM, OFF_PRED, VEC_DIM, action_mask, build_critic, build_obs
-from ..env.scenario import sample_scenario
+from ..env.scenario import sample_for_cfg, sample_scenario
 from ..env.team import Team, make_core, make_player
 from ..models.belief import Belief
 from ..models.networks import make_networks
@@ -106,8 +106,7 @@ class Trainer:
         core, team = self.envs[e]
         if self.opponent["type"] == "qbank":
             core.set_player(self._new_player(e))
-        sc = sample_scenario(self.gm, self.place_rng[e], self.N, self.cfg.env.min_start_dist,
-                             curriculum_range(self.cfg, self.steps))
+        sc = sample_for_cfg(self.cfg, self.gm, self.place_rng[e], curriculum_range(self.cfg, self.steps))
         core.reset(sc)
         team.reset()
         self.ep_ret[e] = 0.0

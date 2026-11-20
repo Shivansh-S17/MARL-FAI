@@ -1,0 +1,34 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+prof.out
+
+# LaTeX build products (keep sources and the final PDFs)
+finalReport/*.aux
+finalReport/*.log
+finalReport/*.out
+finalReport/*.toc
+finalReport/*.nav
+finalReport/*.snm
+finalReport/*.bbl
+finalReport/*.blg
+finalReport/*.fls
+finalReport/*.fdb_latexmk
+finalReport/*.synctex.gz
+
+# model checkpoints and large binaries (kept on the training server)
+*.pt
+*.pth
+artifacts/checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# large training episode logs (kept on the server)
+episodes.json

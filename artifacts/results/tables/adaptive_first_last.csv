@@ -1,0 +1,11 @@
+method,protocol,window,capture,survival,n_seeds
+marl,off_frozen,first5,0.11200000000000002,183.58800000000002,5
+marl,off_frozen,last5,0.136,180.40999999999997,5
+marl,on_frozen,first5,0.11200000000000002,183.724,5
+marl,on_frozen,last5,0.12,182.85,5
+marl_om,off_frozen,first5,0.22600000000000003,166.17000000000002,5
+marl_om,off_frozen,last5,0.22999999999999998,164.118,5
+marl_om,on_frozen,first5,0.22399999999999998,167.352,5
+marl_om,on_frozen,last5,0.23200000000000004,163.124,5
+marl_om,on_online,first5,0.22000000000000003,167.818,5
+marl_om,on_online,last5,0.23000000000000004,163.464,5

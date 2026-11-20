@@ -48,6 +48,20 @@ def metrics_from_capture(p0, p1):
     return dict(G=G, F=F, S=S, minB0=m0, minB1=m1, comp=comp)
 
 
+def _nan_percentiles(v):
+    """2.5/97.5 percentiles over replicates, column-wise; columns that are undefined in every
+    replicate (e.g. a zero gap denominator) stay NaN instead of raising."""
+    shape = v.shape[1:]
+    lo, hi = np.full(shape, np.nan), np.full(shape, np.nan)
+    flat = v.reshape(v.shape[0], -1)
+    lof, hif = lo.reshape(-1), hi.reshape(-1)
+    for j in range(flat.shape[1]):
+        col = flat[:, j]
+        if np.isfinite(col).any():
+            lof[j], hif[j] = np.nanpercentile(col, [2.5, 97.5])
+    return lo, hi
+
+
 def bootstrap(C0, C1, strata=None, nboot=NBOOT, seed=BOOT_SEED):
     """C0,C1: [4(B), S(seeds), E(episodes)] binary capture. Resample seed groups, then matched scenario IDs
     within group (within strata when given). Returns point and percentile CIs."""
@@ -70,7 +84,7 @@ def bootstrap(C0, C1, strata=None, nboot=NBOOT, seed=BOOT_SEED):
     m = metrics_from_capture(p0, p1)
     out = {}
     for k, v in m.items():
-        lo, hi = np.nanpercentile(v, [2.5, 97.5], axis=0) if np.isfinite(v).any() else (np.nan, np.nan)
+        lo, hi = _nan_percentiles(v)
         out[k] = dict(point=point[k], lo=lo, hi=hi, undefined_frac=np.isnan(v).mean(axis=0))
     out["comp_lb95"] = float(np.nanpercentile(m["comp"], 5))
     out["p0"] = dict(point=C0.mean((1, 2)), lo=np.percentile(p0, 2.5, axis=0), hi=np.percentile(p0, 97.5, axis=0))
@@ -134,9 +148,9 @@ def tensor(df, player, seeds, method, metric="captured"):
                       for s in seeds] for b in BUDGETS])
 
 
-def load_all(pattern):
+def load_all(pattern, subs=("main",)):
     frames = []
-    for sub in ("main", "secondary"):
+    for sub in subs:
         for f in sorted((RES / sub).glob(f"*/{pattern}")) if (RES / sub).exists() else []:
             frames.append(pd.read_csv(f))
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
@@ -262,6 +276,22 @@ def analyse_adaptive(df, out_tables, out_fig):
     pd.DataFrame(rows).to_csv(out_tables / "adaptive_first_last.csv", index=False)
 
 
+def analyse_shuffle_control(fw, ctrl, out_tables):
+    """Shuffled-feature control: MARL-OM versus the same architecture with shuffled predictor features, B=1/8."""
+    rows = []
+    for player in sorted(ctrl.player.unique()):
+        main = fw[(fw.player == player) & (fw.method == "marl_om") & (fw.B.astype(str) == "1/8")]
+        c = ctrl[(ctrl.player == player) & (ctrl.B.astype(str) == "1/8")]
+        m_s = main.groupby("seed").captured.mean()
+        c_s = c.groupby("seed").captured.mean()
+        seeds = sorted(set(m_s.index) & set(c_s.index))
+        d = np.array([m_s[k] - c_s[k] for k in seeds])
+        rows.append(dict(player=player, n_seeds=len(seeds), marl_om=float(m_s[seeds].mean()),
+                         shuffled=float(c_s[seeds].mean()), diff=float(d.mean()) if len(d) else np.nan,
+                         seed_diffs=";".join(f"{x:.3f}" for x in d)))
+    pd.DataFrame(rows).to_csv(out_tables / "shuffle_control.csv", index=False)
+
+
 def run_analysis(a, cfg):
     out_t = Path(a.output) if a.output else RES / "tables"
     out_t.mkdir(parents=True, exist_ok=True)
@@ -274,6 +304,9 @@ def run_analysis(a, cfg):
         bwp = base[base.protocol == "frozen_waypoint"] if base is not None else None
         plot_capture_vs_B(res, bwp, FIG)
         plot_packets(fw, FIG)
+    ctrl = load_all("eval_frozen_waypoint.csv", ("secondary",))
+    if not ctrl.empty and not fw.empty:
+        analyse_shuffle_control(fw, ctrl, out_t)
     pc = load_all("eval_player_cells.csv")
     if not pc.empty:
         off = pc[pc.protocol == "off_frozen"].copy()

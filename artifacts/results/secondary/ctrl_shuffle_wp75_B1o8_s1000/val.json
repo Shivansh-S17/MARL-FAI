@@ -1,0 +1,72 @@
+[
+ {
+  "steps": 0,
+  "capture": 0.33,
+  "capped_duration": 158.47,
+  "packets": 78.52,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.5468217402225393,
+  "pred_acc": 0.16307403936269915,
+  "pred_labels": 3201,
+  "train_captures": 0,
+  "elapsed": 68.0944550037384,
+  "target_step": 0
+ },
+ {
+  "steps": 400000,
+  "capture": 0.62,
+  "capped_duration": 112.89,
+  "packets": 41.98,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.5431802479057937,
+  "pred_acc": 0.3059556247567147,
+  "pred_labels": 2569,
+  "train_captures": 5328,
+  "elapsed": 2529.0820395946503,
+  "target_step": 400000
+ },
+ {
+  "steps": 600000,
+  "capture": 0.82,
+  "capped_duration": 84.17,
+  "packets": 37.93,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.5240752423118926,
+  "pred_acc": 0.31137724550898205,
+  "pred_labels": 2505,
+  "train_captures": 8091,
+  "elapsed": 3766.9059731960297,
+  "target_step": 600000
+ },
+ {
+  "steps": 800000,
+  "capture": 0.92,
+  "capped_duration": 75.22,
+  "packets": 33.34,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.5120857762128073,
+  "pred_acc": 0.3250117757889779,
+  "pred_labels": 2123,
+  "train_captures": 10616,
+  "elapsed": 6371.206915378571,
+  "target_step": 800000
+ },
+ {
+  "steps": 1200000,
+  "capture": 0.72,
+  "capped_duration": 109.96,
+  "packets": 46.85,
+  "base_return": NaN,
+  "n": 100,
+  "pred_logloss": 1.508316366408808,
+  "pred_acc": 0.3335659455687369,
+  "pred_labels": 2866,
+  "train_captures": 16188,
+  "elapsed": 15075.14210820198,
+  "target_step": 1200000
+ }
+]

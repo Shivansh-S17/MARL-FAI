@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
@@ -66,18 +67,29 @@ def _run(spec):
     return str(run_training(spec, Path(spec["root"])))
 
 
+def _assign_devices(specs, a):
+    """--gpus 0,1 spreads runs round-robin over those GPUs; --threads sets torch threads per run."""
+    gpus = [g for g in (a.gpus or "").split(",") if g != ""]
+    for k, s in enumerate(specs):
+        if gpus and (a.device or "cuda").startswith("cuda"):
+            s["device"] = f"cuda:{gpus[k % len(gpus)]}"
+        if a.threads:
+            s["threads"] = a.threads
+    return specs
+
+
 def cmd_pilot(a, cfg):
     from .training.pilot import pilot_specs
     import os
     for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
         os.environ[k] = "1"
-    specs = pilot_specs(a)
+    specs = _assign_devices(pilot_specs(a), a)
     print(f"{len(specs)} pilot runs; workers={a.workers}")
     if a.dry_run:
         for s in specs:
             print(s["run_id"])
         return
-    with ProcessPoolExecutor(a.workers) as ex:
+    with ProcessPoolExecutor(a.workers, mp_context=mp.get_context('spawn')) as ex:
         for r in ex.map(_run, specs):
             print("done", r)
 
@@ -87,9 +99,9 @@ def cmd_train(a, cfg):
     import os
     for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
         os.environ[k] = "1"
-    specs = select_specs(a)
+    specs = _assign_devices(select_specs(a), a)
     print(f"{len(specs)} runs")
-    with ProcessPoolExecutor(a.workers) as ex:
+    with ProcessPoolExecutor(a.workers, mp_context=mp.get_context('spawn')) as ex:
         for r in ex.map(_run, specs):
             print("done", r)
 
@@ -109,6 +121,17 @@ def cmd_demo(a, cfg):
     run_viewer(a)
 
 
+def cmd_scenes(a, cfg):
+    """Build comparison scenes 2-4 from saved main-run checkpoints (scene 1 is an illustrative RC scene)."""
+    from .config import ROOT
+    from .evaluation import scenes
+    root = ROOT / "artifacts" / "results" / "main"
+    out = a.output or scenes.REPLAYS
+    scenes.build_scene1(out=out)
+    for fn in (scenes.build_scene2, scenes.build_scene3, scenes.build_scene4):
+        print(fn.__name__, fn(root, out=out))
+
+
 def cmd_export_demo(a, cfg):
     from .rendering.export import export_demo
     export_demo(a)
@@ -117,7 +140,7 @@ def cmd_export_demo(a, cfg):
 def main(argv=None):
     p = argparse.ArgumentParser(prog="python -m pursuit.cli")
     p.add_argument("command", choices=["check", "render-map", "train-player", "pilot", "train", "evaluate",
-                                       "analyze", "demo", "export-demo"])
+                                       "analyze", "demo", "export-demo", "scenes"])
     p.add_argument("--config")
     p.add_argument("--output")
     p.add_argument("--run-ids", default=None, help="comma separated manifest run IDs")
@@ -131,6 +154,8 @@ def main(argv=None):
     p.add_argument("--protocol", default=None)
     p.add_argument("--replay", default=None)
     p.add_argument("--device", default=None)
+    p.add_argument("--gpus", default=None, help="comma list of GPU indices for round-robin run placement")
+    p.add_argument("--threads", type=int, default=None, help="torch threads per training process")
     a = p.parse_args(argv)
     cfg = load_config(a.config)
     globals()["cmd_" + a.command.replace("-", "_")](a, cfg)

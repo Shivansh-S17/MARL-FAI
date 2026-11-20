@@ -1,0 +1,2655 @@
+{
+ "description": "Main training matrix (3 waypoint levels x 4 budgets x 2 methods x 5 seeds); frozen after the pilot decision.",
+ "task_id": "C0",
+ "total_steps": 1200000,
+ "shaping": false,
+ "runs": [
+  {
+   "run_id": "main_wp0_marl_B0_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B0_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B0_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B0_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B0_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B0_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B0_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B0_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B0_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B0_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o8_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o8_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o8_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o8_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o8_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o8_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o8_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o8_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o8_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o8_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o2_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o2_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o2_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o2_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1o2_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o2_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o2_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o2_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o2_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1o2_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_B1_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp0_marl_om_B1_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.0
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B0_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B0_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B0_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B0_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B0_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B0_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B0_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B0_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B0_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B0_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o8_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o8_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o8_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o8_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o8_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o8_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o8_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o8_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o8_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o8_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o2_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o2_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o2_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o2_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1o2_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o2_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o2_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o2_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o2_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1o2_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_B1_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp25_marl_om_B1_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.25
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B0_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B0_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B0_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B0_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B0_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B0_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B0_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B0_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B0_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B0_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "0",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o8_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o8_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o8_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o8_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o8_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o8_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o8_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o8_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o8_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o8_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/8",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o2_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o2_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o2_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o2_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1o2_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o2_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o2_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o2_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o2_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1o2_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1/2",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1_s1000",
+   "group": "main",
+   "method": "marl",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1_s1001",
+   "group": "main",
+   "method": "marl",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1_s1002",
+   "group": "main",
+   "method": "marl",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1_s1003",
+   "group": "main",
+   "method": "marl",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_B1_s1004",
+   "group": "main",
+   "method": "marl",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1_s1000",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1000,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1_s1001",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1001,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1_s1002",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1002,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1_s1003",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1003,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  },
+  {
+   "run_id": "main_wp75_marl_om_B1_s1004",
+   "group": "main",
+   "method": "marl_om",
+   "seed": 1004,
+   "opponent": {
+    "type": "waypoint",
+    "xi": 0.75
+   },
+   "budget": "1",
+   "total_steps": 1200000,
+   "shaping": false,
+   "eval_steps": [
+    400000,
+    600000,
+    800000,
+    1200000
+   ],
+   "root": "D:\\Softwares\\OneDrive - MSFT\\College\\Sem7\\Foundations of AI Multiagent Systems\\Project\\pursuit_project\\artifacts\\results\\main",
+   "device": "cuda",
+   "val_n": 100
+  }
+ ],
+ "scenario_seeds": {
+  "frozen_waypoint": 100000,
+  "frozen_learned_player": 200000,
+  "diagnostic": 300000,
+  "validation": 20000,
+  "bootstrap": 40000
+ }
+}

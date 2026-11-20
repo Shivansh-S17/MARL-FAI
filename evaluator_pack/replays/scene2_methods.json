@@ -1,0 +1,22 @@
+{
+ "title": "Four methods, same scenario",
+ "kind": "experimental",
+ "traces": [
+  "s2_IP_f100000.npz",
+  "s2_RC_f100000.npz",
+  "s2_marl_f100000.npz",
+  "s2_om_f100000.npz"
+ ],
+ "titles": [
+  "IP",
+  "RC",
+  "MARL (B=1/8)",
+  "MARL-OM (B=1/8)"
+ ],
+ "caption": "First final-test scenario (seed 100000); player paths can differ after the start",
+ "card": [
+  "Same start and same player-randomness seed for all four methods.",
+  "The player reacts to each team, so later paths can differ.",
+  "Pursuers trained against waypoint xi = 0.75; budget B = 1/8."
+ ]
+}

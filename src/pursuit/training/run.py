@@ -74,8 +74,13 @@ def run_training(spec: dict, root: Path | None = None, resume=True):
     rd = root / spec["run_id"]
     status_p = rd / "status.json"
     if status_p.exists() and json.loads(status_p.read_text()).get("status") == "complete":
-        print("run complete, skipping:", spec["run_id"])
-        return rd
+        try:
+            have = json.loads((rd / "meta.json").read_text()).get("actual_steps", 0)
+        except Exception:
+            have = 10 ** 12
+        if have >= spec["total_steps"] - 8:   # a final run is never re-opened; a pilot may be extended
+            print("run complete, skipping:", spec["run_id"])
+            return rd
     rd.mkdir(parents=True, exist_ok=True)
     ck = rd / "checkpoint.pt"
     ov = dict(train=dict(total_steps=spec["total_steps"]), reward=dict(shaping=bool(spec.get("shaping", False))))

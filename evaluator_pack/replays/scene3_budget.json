@@ -1,0 +1,19 @@
+{
+ "title": "Budget versus opponent model",
+ "kind": "experimental",
+ "traces": [
+  "s3_lowMARL_f100000.npz",
+  "s3_lowOM_f100000.npz",
+  "s3_highMARL_f100000.npz"
+ ],
+ "titles": [
+  "MARL B=1/8",
+  "MARL-OM B=1/8",
+  "MARL B=1"
+ ],
+ "caption": "First final-test scenario (seed 100000); not selected by outcome",
+ "card": [
+  "Low-budget MARL, low-budget MARL-OM and high-budget MARL.",
+  "Same start and player-randomness seed; later paths can differ."
+ ]
+}

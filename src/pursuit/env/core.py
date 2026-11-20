@@ -35,10 +35,11 @@ class StepResult:
 
 class PursuitCore:
     def __init__(self, gmap: GridMap, n_npcs=4, horizon=200, radius=5, delay=0,
-                 budget=Fraction(1, 8), reward=None):
+                 budget=Fraction(1, 8), reward=None, player_radius=5):
         self.map, self.N, self.H, self.r, self.delay = gmap, n_npcs, horizon, radius, delay
         self.budget = Fraction(budget)
         self.vis = gmap.visibility(radius)
+        self.pvis = self.vis if player_radius == radius else gmap.visibility(player_radius)  # player sees radius 5 regardless of NPC radius
         self.channel = Channel(n_npcs, self.budget, delay)
         rw = dict(capture=1.0, step=0.10, comm=0.01, move=0.02, shaping=False, shaping_coef=0.10)
         rw.update(reward or {})
@@ -72,7 +73,7 @@ class PursuitCore:
         return LocalObs(self.t, c, vis, self.pcell if vis[self.pcell] else -1, tm)
 
     def player_obs(self) -> PlayerObs:
-        v = self.vis[self.pcell]
+        v = self.pvis[self.pcell]
         return PlayerObs(self.pcell, self.t, tuple((j, c) for j, c in enumerate(self.npc) if v[c]))
 
     def potential(self, npc=None, pcell=None) -> float:

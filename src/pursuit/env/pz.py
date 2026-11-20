@@ -9,7 +9,7 @@ from pettingzoo import ParallelEnv
 
 from ..config import parse_budget
 from .observation import VEC_DIM, action_mask, build_obs
-from .scenario import sample_scenario
+from .scenario import sample_for_cfg
 from .team import Team, make_core
 
 
@@ -46,7 +46,7 @@ class PursuitParallelEnv(ParallelEnv):
     def reset(self, seed=None, options=None):
         if seed is not None:
             self._rng = np.random.default_rng(seed)
-        sc = sample_scenario(self.core.map, self._rng, self.cfg.env.n_npcs, self.cfg.env.min_start_dist)
+        sc = sample_for_cfg(self.cfg, self.core.map, self._rng)
         self.core.reset(sc)
         self.team.reset()
         self.agents = list(self.possible_agents)

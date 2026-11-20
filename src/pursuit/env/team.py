@@ -13,7 +13,8 @@ def make_core(cfg, player=None, budget=None) -> PursuitCore:
     gm = load_map(cfg.env.map)
     from ..config import parse_budget
     b = parse_budget(cfg.env.budget if budget is None else budget)
-    core = PursuitCore(gm, cfg.env.n_npcs, cfg.env.horizon, cfg.env.radius, cfg.env.delay, b, dict(cfg.reward))
+    core = PursuitCore(gm, cfg.env.n_npcs, cfg.env.horizon, cfg.env.radius, cfg.env.delay, b, dict(cfg.reward),
+                      player_radius=cfg.env.get('player_radius', 5))
     core.set_player(player if player is not None else make_player(cfg, gm))
     return core
 
