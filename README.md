@@ -46,8 +46,13 @@ less within 20-episode blocks; a shuffled-feature control (xi = 0.75, B = 1/8) c
 ignoring delivered packets at B = 1 changes capture by about 0.01 (MARL 0.820 vs 0.828, MARL-OM 0.834 vs 0.828).
 
 ### Replay screenshots
-Recorded comparison scenes (methods, budgets, learning player). The full annotated animation is
-[`evaluator_pack/demo.gif`](evaluator_pack/demo.gif).
+Recorded comparison scenes (methods, budgets, learning player), shown as an annotated animation
+([`evaluator_pack/demo.gif`](evaluator_pack/demo.gif), about 90 s):
+
+![Demo animation of the comparison scenes](evaluator_pack/demo.gif)
+
+Still frames from the same scenes:
+![test](evaluator_pack/demo.gif)
 
 ![Four methods, same scenario](evaluator_pack/figures/keyframes/keyframe_06_scene2_t060.png)
 ![Budget comparison](evaluator_pack/figures/keyframes/keyframe_09_scene3_t200.png)
