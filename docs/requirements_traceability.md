@@ -30,7 +30,7 @@ Status key: **done** (implemented and checked), **running** (in progress), **pen
 | 5.1 target memory and role hints | `controllers/local.py` | done |
 | 5.4 recurrent MAPPO | `models/networks.py`, `training/trainer.py`; `tests/test_learning.py` | done |
 | 5.5 local predictor and belief | `models/predictor.py`, `models/belief.py` | done |
-| 6.1 message-use audit | `evaluation/calibration.py`; `tests/test_message_audit.py` | done; reliance diagnostic: protocol `reliance` (results in `eval_reliance.csv` per run) |
+| 6.1 message-use audit | `evaluation/calibration.py`; `tests/test_message_audit.py` | done; reliance diagnostic: protocol `reliance`; per-run `eval_reliance.csv`, summary `tables/reliance_summary.csv` |
 | 6.1 bounded calibration C0-C3 | `artifacts/results/calibration_tasks/rc_candidates.csv`; `docs/pilot_report.md` section 4 | done (C0 retained) |
 | 6.2 revised adequacy | `training/adequacy.py`; `artifacts/results/pilot_adequacy_base.json` (server) | done |
 | 6.3 resources | `docs/pilot_report.md` section 6 | done |

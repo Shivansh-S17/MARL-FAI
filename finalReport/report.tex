@@ -49,10 +49,43 @@ Distributed constraint optimization (DCOP) supports role and task allocation \ci
 
 \textbf{Reward.} $r=\mathbf 1[\text{capture}]-0.10/H-0.01\,b_t/(NH)-0.02\,m_t/(NH)$ with $\gamma=1$, where $b_t$ is the number of broadcasts and $m_t$ the number of NPC moves at step $t$.
 
-\section{Methods}
-\textbf{IP} follows shortest paths to the latest direct sighting and otherwise searches its quadrant. \textbf{RC} follows a shared role-hint destination (chase, intercept, block or search) and sends on new sightings, role changes, or every ten steps. \textbf{MARL} is recurrent MAPPO: a shared GRU actor over a convolutional map encoder with a masked ten-action head (five moves times send or silence) and a centralized critic. \textbf{MARL-OM} adds a per-NPC local predictor of the player's next displacement, trained only from permitted consecutive direct sightings, and a belief over the player's cell that feeds seven summary features to the actor.
+\section{Methodology}
+We compare four pursuers that differ in how they combine local sight, messages and a model of the player. All four act decentrally: an NPC's decision uses only its own observation, its memory and the packets delivered to it.
 
-\textbf{Players.} The waypoint player follows a fixed route with randomness $\xi\in\{0,0.25,0.75\}$. The learning player is a tabular Q-learner on a coarse local state with $\epsilon=0.10$, trained as eight checkpoints (three validation, five held-out).
+\subsection{Rule-based pursuers}
+\textbf{Independent pursuit (IP).} Each NPC walks a shortest path to the latest cell where it directly saw the player; when it has none it searches its own quadrant of the map. IP never sends.
+
+\textbf{Rule-based coordination (RC).} Each NPC keeps a memory of the newest sighting (its own or received) and shares a role hint: chase, intercept, block or search. The role and its destination come from a local utility score with an overlap penalty, in the spirit of DCOP task allocation \citep{fioretto2018}, so that teammates do not all pick the same destination. An NPC sends when it makes a new sighting, when its role or destination changes, or every ten steps, always subject to the budget rule of Section~3. A packet carries sender, flags, sender cell, target cell, target step, displacement, role, destination and send step in 16 bytes.
+
+\subsection{MARL: communication-constrained recurrent MAPPO}
+The learned pursuers share one actor network across the four NPCs and are trained with multi-agent PPO using a centralized critic \citep{yu2022}. The actor reads a five-channel $20\times20$ local map (walls, cells currently visible, own position, visible teammates and the cell where the player is directly seen) through two $3\times3$ convolutions (16 and 32 channels) and a linear layer to 64 units. It concatenates this with a vector of scalar features (NPC identity, remaining time, budget, available send credit, previous move and send, the newest sighting held in memory with its age and displacement, the current role and destination, and the latest packet from each teammate) and passes the result through a 64-unit GRU cell. The head outputs ten logits, one for each of five moves crossed with send or stay silent. Budget-illegal sends are masked, so an NPC cannot exceed its allowance. At execution the actor takes the greedy action.
+
+The centralized critic is a 128--128 MLP on the full state (all positions, the map, channel credit and usage, time and the training opponent's controller state). It is used only for training and never at execution. Training uses the reward of Section~3 with $\gamma=1$, GAE $\lambda=0.95$, clip 0.2, value coefficient 0.5, entropy coefficient 0.01, learning rate $3\times10^{-4}$, gradient-norm clip 0.5, 8 parallel environments, 128-step rollouts, 4 epochs over 16-step sequences in 4 minibatches. A short curriculum draws closer player starts (distance 1--3, then 4--8) during the first 90k transitions. Every run trains for exactly 1.2M environment transitions and the final checkpoint is evaluated; no best-checkpoint selection is used.
+
+\subsection{MARL-OM: adding a local opponent model}
+MARL-OM adds, for each NPC, a small predictor and a belief that never see the player's hidden state. The predictor is a 42--32--32--5 MLP that outputs a distribution over the player's next displacement (four moves or stay). Its input holds the previous displacement, the region of the target cell, the NPC's position relative to the target and the visible teammates. It is trained with cross-entropy (Adam, learning rate $10^{-3}$, FIFO buffer of 512, five updates per rollout, batches of 64) only on labels that the NPC is permitted to observe: consecutive direct sightings.
+
+Each NPC keeps a belief over (free cell, previous displacement). At each step the belief is propagated through the predictor, cells the NPC can see to be empty are removed, and a direct sighting or a received report collapses it. Seven summary features go to the actor: the mean and variance of the position in each axis, their covariance, the normalized entropy and the maximum probability. All other inputs, the architecture, the seeds and the training schedule are identical to MARL, so the comparison isolates the opponent model.
+
+\subsection{Players and evaluation protocol}
+\textbf{Waypoint player.} Cycles through a fixed list of waypoint cells along shortest paths; with probability $\xi\in\{0,0.25,0.75\}$ it takes a random legal move. \textbf{Q-learning player.} A tabular learner on a coarse local state ($\alpha=0.10$, $\gamma=0.95$, $\epsilon=0.10$); eight banks were trained (seeds 7000--7002 for validation, 7100--7104 held out).
+
+\textbf{Experiment design.} Pursuers are trained against the waypoint player at the three $\xi$ levels, for four budgets and five seeds each (1000--1004), giving 120 runs; every run is evaluated on 100 held-out scenarios (scenario seeds from 100000). Pursuers trained at $\xi=0.75$ are then evaluated without retraining against the held-out Q-learning banks, in 20-episode blocks in which the player is frozen or keeps learning, and with the predictor frozen or updated online. The Q-learning player is used only for evaluation: during the pilot, training against it did not reach the adequacy criterion (capture of at least 0.20) in any variant.
+
+\textbf{Statistics.} Capture rates are averaged over scenarios and then seeds. Intervals are 95\% percentile bootstrap intervals (5,000 resamples, seed 40000) that resample training seeds and then scenarios, paired across the two methods. The confirmatory test is a sign-flip test of $G(1/8)$ across seeds with Holm adjustment over conditions. Gap fractions whose denominator is zero are reported as undefined, and ceiling conditions are labelled uninformative rather than summarized.
+
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.94\linewidth}\small
+\textbf{Procedure (per run).}\
+1. Fix $(\xi, B, \text{method}, \text{seed})$; initialize actor, critic and, for MARL-OM, the predictors.\
+2. Repeat until 1.2M transitions: collect 8 environments $\times$ 128 steps with the masked actor; (MARL-OM) update beliefs from received packets and permitted sightings.\
+3. Compute GAE from the centralized critic; run 4 PPO epochs on 16-step sequences; (MARL-OM) run 5 predictor updates per NPC.\
+4. Evaluate the final checkpoint on 100 held-out scenarios (frozen waypoint), and for $\xi=0.75$ against held-out Q banks.
+\end{minipage}}
+\caption{Training and evaluation procedure for one learned run.}
+\label{fig:proc}
+\end{figure}
 
 \section{Experimental setup and pilot}
 All learned runs use 1.2M environment transitions. The pilot examined 300k, 600k and 1.2M steps. A revised adequacy check requires finite losses, at least 100 training captures, final validation capture of at least 0.20, and an improvement of at least 0.10 over the untrained policy. All six required waypoint conditions satisfy it (Table~\ref{tab:adequacy}).
@@ -82,7 +115,23 @@ $\xi=0.25$, $B=0$ & MARL-OM & 1.00 & 0.57 & 0.00 \\
 \section{Controlled results}
 All 120 runs (3 waypoint levels $\times$ 4 budgets $\times$ 2 learners $\times$ 5 seeds) finished at 1.2M transitions. Each cell below is the mean over five training seeds, each evaluated on 100 held-out scenarios; intervals are 95\% paired bootstrap intervals (5,000 resamples). $G(B)=P_{\text{OM}}(B)-P_{\text{MARL}}(B)$ is the capture gain from the opponent model.
 
-\textbf{Deterministic and mildly random players.} At $\xi=0$ and $\xi=0.25$ both learners capture essentially every episode at every budget (capture 0.996--1.000; Table~\ref{tab:wp}). Because capture is at ceiling, these two conditions do not separate the methods and are reported as uninformative for the gain and communication-saved measures; their gap fractions are left undefined rather than imputed.
+\textbf{Deterministic and mildly random players.} At $\xi=0$ and $\xi=0.25$ both learners capture essentially every episode at every budget (capture 0.996--1.000; Table~\ref{tab:ceiling}). Because capture is at ceiling, these two conditions do not separate the methods and are reported as uninformative for the gain and communication-saved measures; their gap fractions are left undefined rather than imputed.
+
+\begin{table}[t]
+\centering
+\caption{Capture rate at $\xi\in\{0,0.25\}$ (mean over 5 seeds). IP and RC capture every episode at every budget.}
+\label{tab:ceiling}
+\begin{tabular}{llcccc}
+\toprule
+$\xi$ & Method & $B=0$ & $B=1/8$ & $B=1/2$ & $B=1$ \\
+\midrule
+0 & MARL & 1.000 & 1.000 & 1.000 & 1.000 \\
+0 & MARL-OM & 1.000 & 0.998 & 1.000 & 1.000 \\
+0.25 & MARL & 1.000 & 0.996 & 1.000 & 1.000 \\
+0.25 & MARL-OM & 1.000 & 1.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textbf{Highly random player ($\xi=0.75$).} This is the only waypoint condition with headroom. MARL-OM captures more than MARL at $B=0$ (0.922 versus 0.860) and $B=1/8$ (0.932 versus 0.820), with $G(1/8)=+0.112$ (95\% CI $-0.006$ to $0.218$). At $B=1/2$ the order reverses ($G=-0.100$, CI $-0.280$ to $0.064$) and at $B=1$ the two are close ($G=+0.014$). The pre-specified test on $G(1/8)$ across five seeds gives a Holm-adjusted $p=0.56$ (the smallest attainable with five seeds is $0.0625$); the seed-level differences are $+0.18,+0.21,+0.23,-0.08,+0.02$. The point estimate favours MARL-OM at low budget, and the data do not establish it at the five-seed level.
 
@@ -117,6 +166,8 @@ $B$ & MARL & MARL-OM & $G$ & 95\% CI for $G$ \\
 \end{figure}
 
 \textbf{Shuffled-feature control.} To check whether the predictor's content matters, we trained the MARL-OM architecture with its predictor features shuffled (10 extra runs, $B=1/8$, five seeds each at $\xi=0$ and $\xi=0.75$). At $\xi=0$ both capture every episode (1.000 versus 0.998). At $\xi=0.75$ the intact MARL-OM captures 0.932 and the shuffled variant 0.832, a difference of $+0.100$ with seed-level differences of $+0.29,-0.01,+0.11,+0.18,-0.07$; this control was not part of the confirmatory tests and is descriptive.
+
+\textbf{Reliance on received messages.} To test whether trained pursuers use what they receive, we replayed the $B=1$, $\xi=0.75$ checkpoints on the same 100 scenarios with and without delivered packets reaching the receivers' memory. Capture is essentially unchanged: MARL 0.820 with packets and 0.828 without; MARL-OM 0.834 with and 0.828 without (per-seed differences between $-0.03$ and $+0.04$). The trained pursuers at this budget do not measurably depend on received messages in this task.
 
 \textbf{Role of communication.} In this task the scripted baselines and the learners capture nearly every episode with no communication at $\xi\le0.25$, so extra messages have no capture headroom to add there. At $\xi=0.75$ capture does not increase monotonically with the budget for either learner (MARL: 0.860, 0.820, 0.842, 0.820), so the study does not show a budget-driven improvement in this setting.
 
@@ -156,7 +207,23 @@ At $B=1/8$ MARL-OM captures 0.362 versus 0.094 for MARL, and the interval for $G
 \textbf{Limits.} The main task was kept at radius 5 and $H=200$ after calibration showed RC at 97--100\% capture without messages in all four predeclared variants; the study therefore addresses communication in a task where it adds little to the strongest baselines, and a harder communication bottleneck is future work. The learned pursuers capture 0.82--0.93 against the $\xi=0.75$ player, below IP and RC, which capture every episode there. The Q-learning player is used only for evaluation, so its results measure transfer, not training against a learning opponent. Five seeds limit the attainable significance (smallest sign-flip $p=0.0625$).
 
 \section{Contributions and reproducibility}
-Piyush Choudhary: simulator, maps, capture, visibility and channel, waypoint and Q-learning players, IP/RC, environment tests, rendering and viewer. Shivansh Shukla: MAPPO, local predictors and beliefs, frozen and online protocols, pilot, manifests, statistics and plots. Both: interfaces, protocol freeze, experiments, analysis, report, slides and demo. Code, configurations, manifests, run metadata and the evaluator pack are in \texttt{pursuit\_project/}.
+\begin{table}[h]
+\centering
+\caption{Task assignment and outcome.}
+\label{tab:contrib}
+\small
+\begin{tabular}{p{2.3cm}p{8.2cm}p{2.6cm}}
+\toprule
+Member & Assigned tasks & Outcome \\
+\midrule
+Piyush Choudhary & Simulator, maps, capture, visibility and channel; waypoint and Q-learning players; IP and RC pursuers; environment tests; rendering and replay viewer & Fulfilled \\
+Shivansh Shukla & Recurrent MAPPO; local predictors and beliefs; frozen, adaptive and online protocols; pilot and manifests; statistics and plots & Fulfilled; Q-player training scoped to evaluation-only transfer after the pilot \\
+Both & Interfaces, protocol freeze, 120-run experiment, analysis, report, demo & Fulfilled \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Reproducibility.} The code, configurations, run manifest, per-run evaluation outputs, analysis tables and figures are in the repository (\texttt{README.md} maps each table and figure of this report to the command and file that produces it). Every number in Tables~\ref{tab:ceiling}--\ref{tab:q} and Figures~\ref{fig:budget}--\ref{fig:adaptive} is computed by \texttt{python -m pursuit.cli analyze} from the saved per-run CSV files.
 
 \bibliographystyle{plainnat}
 \bibliography{references}

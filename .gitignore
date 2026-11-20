@@ -32,3 +32,8 @@ Thumbs.db
 
 # large training episode logs (kept on the server)
 episodes.json
+
+# slides and run logs are not part of the submission
+finalReport/slides.*
+evaluator_pack/slides.pdf
+artifacts/logs/

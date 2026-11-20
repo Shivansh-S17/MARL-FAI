@@ -1,0 +1,3 @@
+method,packets_ignored,packets_used,diff_ignored_minus_used,n_seeds
+marl,0.828,0.82,0.008000000000000007,5
+marl_om,0.828,0.834,-0.006000000000000005,5

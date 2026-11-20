@@ -292,6 +292,16 @@ def analyse_shuffle_control(fw, ctrl, out_tables):
     pd.DataFrame(rows).to_csv(out_tables / "shuffle_control.csv", index=False)
 
 
+def analyse_reliance(rel, out_tables):
+    """Reliance diagnostic: capture with delivered packets used versus ignored (same scenarios)."""
+    seed_cap = rel.groupby(["method", "seed", "mode"]).captured.mean().unstack("mode")
+    seed_cap["diff_ignored_minus_used"] = seed_cap["packets_ignored"] - seed_cap["packets_used"]
+    seed_cap.reset_index().to_csv(out_tables / "reliance_by_seed.csv", index=False)
+    summ = seed_cap.groupby("method").mean().reset_index()
+    summ["n_seeds"] = seed_cap.groupby("method").size().values
+    summ.to_csv(out_tables / "reliance_summary.csv", index=False)
+
+
 def run_analysis(a, cfg):
     out_t = Path(a.output) if a.output else RES / "tables"
     out_t.mkdir(parents=True, exist_ok=True)
@@ -304,6 +314,9 @@ def run_analysis(a, cfg):
         bwp = base[base.protocol == "frozen_waypoint"] if base is not None else None
         plot_capture_vs_B(res, bwp, FIG)
         plot_packets(fw, FIG)
+    rel = load_all("eval_reliance.csv")
+    if not rel.empty:
+        analyse_reliance(rel, out_t)
     ctrl = load_all("eval_frozen_waypoint.csv", ("secondary",))
     if not ctrl.empty and not fw.empty:
         analyse_shuffle_control(fw, ctrl, out_t)

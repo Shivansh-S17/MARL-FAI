@@ -4,7 +4,7 @@
 when four NPCs pursue one player in a corridor map? Does it still help when the player learns to evade?
 
 ## Two-minute walkthrough (nothing to install)
-1. Open `slides.pdf` (slide 1: the corridor picture; slides 6-8: results).
+1. Open `report.pdf`: the full report (method, results, discussion).
 2. Open `figures/map_information.png`: the map and what each NPC can see.
 3. Watch `demo.gif` (about 90 s, annotated; scenes say whether they are illustrative or recorded).
 4. Result plots are in `figures/`; `results_summary_waypoint.csv` and `results_summary_player.csv` have the numbers behind them; `report.pdf` is the full report.
