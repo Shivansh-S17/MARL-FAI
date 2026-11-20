@@ -52,7 +52,6 @@ Recorded comparison scenes (methods, budgets, learning player), shown as an anno
 ![Demo animation of the comparison scenes](evaluator_pack/demo.gif)
 
 Still frames from the same scenes:
-![test](evaluator_pack/demo.gif)
 
 ![Four methods, same scenario](evaluator_pack/figures/keyframes/keyframe_06_scene2_t060.png)
 ![Budget comparison](evaluator_pack/figures/keyframes/keyframe_09_scene3_t200.png)
